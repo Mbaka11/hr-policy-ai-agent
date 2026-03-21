@@ -1,0 +1,16 @@
+.git/
+.venv/
+.env
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+data/chroma_db/
+tests/
+docs/
+examples/
+README.md
+pyproject.toml
+.gitignore
