@@ -107,18 +107,18 @@ User ──► Streamlit UI ──► Agent/Chain
 
 ## Key Decisions
 
-| Decision     | Choice                     | Rationale                                                |
-| ------------ | -------------------------- | -------------------------------------------------------- |
-| LLM          | GPT-4o-mini                | Cost-efficient, fast, good quality for a prototype       |
-| Embeddings   | text-embedding-3-small     | Good quality/cost ratio                                  |
-| Vector Store | ChromaDB (persistent)      | Lightweight, local, no external service needed           |
-| Framework    | LangChain                  | Well-documented, lots of integrations, industry standard |
-| UI           | Streamlit                  | Fast to build, looks polished for demos                  |
-| PDF Loader   | PyMuPDF (PyMuPDFLoader)    | Faster, more robust than pypdf, better text extraction   |
-| Chunk size   | ~1000 chars, ~200 overlap  | Standard for document Q&A                                |
-| Memory       | 5-turn conversation window | Sufficient for Q&A context                               |
+| Decision     | Choice                       | Rationale                                                                     |
+| ------------ | ---------------------------- | ----------------------------------------------------------------------------- |
+| LLM          | GPT-4o-mini                  | Cost-efficient, fast, good quality for a prototype                            |
+| Embeddings   | text-embedding-3-small       | Good quality/cost ratio                                                       |
+| Vector Store | ChromaDB (persistent)        | Lightweight, local, no external service needed                                |
+| Framework    | LangChain                    | Well-documented, lots of integrations, industry standard                      |
+| UI           | Streamlit                    | Fast to build, looks polished for demos                                       |
+| PDF Loader   | PyMuPDF (PyMuPDFLoader)      | Faster, more robust than pypdf, better text extraction                        |
+| Chunk size   | ~1000 chars, ~200 overlap    | Standard for document Q&A                                                     |
+| Memory       | 5-turn conversation window   | Sufficient for Q&A context                                                    |
 | Confidence   | Score threshold on retrieval | Return fallback message instead of hallucinating when no relevant chunk found |
-| Docker       | Optional Dockerfile        | Shows production awareness, makes demo portable          |
+| Docker       | Optional Dockerfile          | Shows production awareness, makes demo portable                               |
 
 ## Timeline
 

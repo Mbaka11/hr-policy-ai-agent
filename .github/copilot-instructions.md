@@ -23,6 +23,7 @@ User → Streamlit → Agent → Retriever (ChromaDB) → Context + System Promp
 ```
 
 Key modules in `src/`:
+
 - `config.py` — Environment variables and settings
 - `document_loader.py` — Load PDFs and text files using LangChain loaders
 - `text_splitter.py` — Chunk documents with RecursiveCharacterTextSplitter
