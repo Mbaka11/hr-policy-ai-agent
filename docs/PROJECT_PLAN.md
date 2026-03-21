@@ -21,16 +21,16 @@ Build a full-featured RAG-based AI agent for HR policy Q&A.
 | 3   | Create .github/copilot-instructions.md                                           | ✅ Done |
 | 4   | Write initial README.md                                                          | ✅ Done |
 
-### Phase 2: Data Sourcing & Ingestion — `⬜ NOT STARTED`
+### Phase 2: Data Sourcing & Ingestion — `✅ COMPLETE`
 
-| #   | Task                                                 | Status |
-| --- | ---------------------------------------------------- | ------ |
-| 5   | Source 5-10 publicly available HR policy documents   | ⬜     |
-| 6   | Implement document loader (`src/document_loader.py`) | ⬜     |
-| 7   | Implement text splitter (`src/text_splitter.py`)     | ⬜     |
-| 8   | Implement embeddings wrapper (`src/embeddings.py`)   | ⬜     |
-| 9   | Implement vector store (`src/vector_store.py`)       | ⬜     |
-| 10  | Create ingestion script (`scripts/ingest.py`)        | ⬜     |
+| #   | Task                                                 | Status  |
+| --- | ---------------------------------------------------- | ------- |
+| 5   | Source 5-10 publicly available HR policy documents   | ✅ Done (29 md + 2 pdf across 6 categories) |
+| 6   | Implement document loader (`src/document_loader.py`) | ✅ Done |
+| 7   | Implement text splitter (`src/text_splitter.py`)     | ✅ Done |
+| 8   | Implement embeddings wrapper (`src/embeddings.py`)   | ✅ Done |
+| 9   | Implement vector store (`src/vector_store.py`)       | ✅ Done |
+| 10  | Create ingestion script (`scripts/ingest.py`)        | ✅ Done |
 
 ### Phase 3: RAG Pipeline & Agent — `⬜ NOT STARTED`
 
