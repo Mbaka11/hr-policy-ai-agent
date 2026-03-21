@@ -1,8 +1,8 @@
 ---
 title: Work Accidents Policy
 source: McGill University
-category: Workplace Safety
-priority: high
+url: https://www.mcgill.ca/hr/employee-relations/policies-procedures
+category: code_of_conduct
 ---
 
 # Work Accidents Policy

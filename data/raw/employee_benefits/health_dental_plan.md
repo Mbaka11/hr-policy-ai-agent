@@ -1,7 +1,8 @@
 ---
 title: Health and Dental Benefits
 source: McGill University
-category: Benefits
+url: https://www.mcgill.ca/hr/benefits/health-dental
+category: employee_benefits
 ---
 
 # Health and Dental Benefits

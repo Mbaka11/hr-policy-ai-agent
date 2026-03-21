@@ -1,7 +1,8 @@
 ---
 title: Emergency Travel Assistance
 source: McGill University
-category: Benefits
+url: https://www.mcgill.ca/hr/benefits/travel
+category: employee_benefits
 ---
 
 # Emergency Travel Assistance

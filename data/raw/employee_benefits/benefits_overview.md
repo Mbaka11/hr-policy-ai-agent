@@ -1,7 +1,8 @@
 ---
 title: Benefits Overview
 source: McGill University
-category: Benefits
+url: https://www.mcgill.ca/hr/benefits
+category: employee_benefits
 ---
 
 # Employee Benefits

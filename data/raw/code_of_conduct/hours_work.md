@@ -1,8 +1,8 @@
 ---
 title: Hours of Work Policy
 source: McGill University
-category: Employment & Work Conditions
-priority: high
+url: https://www.mcgill.ca/hr/employee-relations/policies-procedures
+category: code_of_conduct
 ---
 
 # Hours of Work Policy

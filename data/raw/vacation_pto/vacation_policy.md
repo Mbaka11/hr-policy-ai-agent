@@ -1,6 +1,7 @@
 ---
 title: Vacation Policy
 source: McGill University
+url: https://www.mcgill.ca/hr/employee-relations/policies-procedures/vacation-policy
 category: vacation_pto
 ---
 

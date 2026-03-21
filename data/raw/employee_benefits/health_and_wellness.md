@@ -1,7 +1,8 @@
 ---
 title: Health and Well-Being Resources
 source: McGill University
-category: Benefits
+url: https://www.mcgill.ca/hr/benefits/health-well-being
+category: employee_benefits
 ---
 
 # Health and Well-Being Resources

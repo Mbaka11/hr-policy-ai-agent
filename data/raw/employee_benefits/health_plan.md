@@ -1,7 +1,8 @@
 ---
 title: Supplemental Health Plan
 source: McGill University
-category: Benefits
+url: https://www.mcgill.ca/hr/benefits/health
+category: employee_benefits
 ---
 
 # Supplemental Health Plan

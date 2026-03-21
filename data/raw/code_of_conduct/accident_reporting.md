@@ -1,4 +1,11 @@
-Accident Reporting Policy
+---
+title: Accident Reporting Policy
+source: McGill University
+url: https://www.mcgill.ca/hr/employee-relations/policies-procedures
+category: code_of_conduct
+---
+
+# Accident Reporting Policy
 
 1. PURPOSE
    1.1 The University is subject to the Quebec Act respecting Industrial Accidents and Occupational Diseases, which provides that all accidents sustained by employees during working hours, must be reported to the Commission des normes, de l'équité, de la santé et de la sécurité du travail (CNESST).

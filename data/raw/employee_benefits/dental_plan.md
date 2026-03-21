@@ -1,7 +1,8 @@
 ---
 title: Dental Plan
 source: McGill University
-category: Benefits
+url: https://www.mcgill.ca/hr/benefits/dental
+category: employee_benefits
 ---
 
 # Dental Plan

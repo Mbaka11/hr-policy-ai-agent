@@ -1,7 +1,8 @@
 ---
 title: Life Insurance Plan
 source: McGill University
-category: Benefits
+url: https://www.mcgill.ca/hr/benefits/life-insurance
+category: employee_benefits
 ---
 
 # Life Insurance Plan

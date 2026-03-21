@@ -1,8 +1,8 @@
 ---
 title: Rest Periods Policy
 source: McGill University
-category: Employment & Work Conditions
-priority: medium
+url: https://www.mcgill.ca/hr/employee-relations/policies-procedures
+category: code_of_conduct
 ---
 
 # Rest Periods Policy
