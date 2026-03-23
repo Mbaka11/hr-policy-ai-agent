@@ -23,32 +23,32 @@ Build a full-featured RAG-based AI agent for HR policy Q&A.
 
 ### Phase 2: Data Sourcing & Ingestion — `✅ COMPLETE`
 
-| #   | Task                                                 | Status  |
-| --- | ---------------------------------------------------- | ------- |
+| #   | Task                                                 | Status                                      |
+| --- | ---------------------------------------------------- | ------------------------------------------- |
 | 5   | Source 5-10 publicly available HR policy documents   | ✅ Done (29 md + 2 pdf across 6 categories) |
-| 6   | Implement document loader (`src/document_loader.py`) | ✅ Done |
-| 7   | Implement text splitter (`src/text_splitter.py`)     | ✅ Done |
-| 8   | Implement embeddings wrapper (`src/embeddings.py`)   | ✅ Done |
-| 9   | Implement vector store (`src/vector_store.py`)       | ✅ Done |
-| 10  | Create ingestion script (`scripts/ingest.py`)        | ✅ Done |
+| 6   | Implement document loader (`src/document_loader.py`) | ✅ Done                                     |
+| 7   | Implement text splitter (`src/text_splitter.py`)     | ✅ Done                                     |
+| 8   | Implement embeddings wrapper (`src/embeddings.py`)   | ✅ Done                                     |
+| 9   | Implement vector store (`src/vector_store.py`)       | ✅ Done                                     |
+| 10  | Create ingestion script (`scripts/ingest.py`)        | ✅ Done                                     |
 
-### Phase 3: RAG Pipeline & Agent — `⬜ NOT STARTED`
+### Phase 3: RAG Pipeline & Agent — `✅ COMPLETE`
 
-| #   | Task                                              | Status |
-| --- | ------------------------------------------------- | ------ |
-| 11  | Implement retriever (`src/retriever.py`)          | ⬜     |
-| 12  | Design system prompt (`prompts/system_prompt.md`) | ⬜     |
-| 13  | Implement RAG chain (`src/chain.py`)              | ⬜     |
-| 14  | Implement agent layer (`src/agent.py`)            | ⬜     |
-| 15  | Implement config module (`src/config.py`)         | ⬜     |
+| #   | Task                                              | Status  |
+| --- | ------------------------------------------------- | ------- |
+| 11  | Implement retriever (`src/retriever.py`)          | ✅ Done |
+| 12  | Design system prompt (`prompts/system_prompt.md`) | ✅ Done |
+| 13  | Implement RAG chain (`src/chain.py`)              | ✅ Done |
+| 14  | Implement agent layer (`src/agent.py`)            | ✅ Done |
+| 15  | Implement config module (`src/config.py`)         | ✅ Done |
 
-### Phase 4: Streamlit UI — `⬜ NOT STARTED`
+### Phase 4: Streamlit UI — `✅ COMPLETE`
 
-| #   | Task                                | Status |
-| --- | ----------------------------------- | ------ |
-| 16  | Build chat interface (`src/app.py`) | ⬜     |
-| 17  | Add source document display         | ⬜     |
-| 18  | Add sidebar with project info       | ⬜     |
+| #   | Task                                | Status  |
+| --- | ----------------------------------- | ------- |
+| 16  | Build chat interface (`src/app.py`) | ✅ Done |
+| 17  | Add source document display         | ✅ Done |
+| 18  | Add sidebar with project info       | ✅ Done |
 
 ### Phase 5: Testing & Evaluation — `⬜ NOT STARTED`
 
