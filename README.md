@@ -10,9 +10,55 @@ An AI-powered agent that answers employee questions about HR policies using **Re
 
 - **Accurate answers** grounded in real HR policy documents (RAG — no hallucination)
 - **Source citations** — every answer references the document name and page/section
-- **Conversational** — maintains context across follow-up questions
+- **Conversational memory** — maintains context across follow-up questions (sliding window)
+- **Smart routing** — classifies queries as HR, sensitive (→ escalate), or off-topic (→ redirect)
+- **Confidence fallback** — when no relevant documents are found, the agent says so instead of guessing
 - **Edge case handling** — escalates sensitive topics to HR, redirects off-topic queries
 - **Interactive UI** — Streamlit chat interface with expandable source panel
+- **Dockerized** — run the full stack with a single `docker run` command
+
+## Architecture
+
+```
+User
+ │
+ ▼
+Streamlit Chat UI (src/app.py)
+ │
+ ▼
+HRAgent (src/agent.py)
+ ├── Query Classifier (regex-based)
+ │    ├── ESCALATE → warning + optional policy context
+ │    ├── OFF_TOPIC → polite redirect
+ │    └── HR_QUERY ──►─┐
+ │                      ▼
+ │              RAG Chain (src/chain.py)
+ │                      │
+ │          ┌───────────┴────────────┐
+ │          ▼                        ▼
+ │   Retriever                System Prompt
+ │   (src/retriever.py)       (prompts/system_prompt.md)
+ │          │
+ │          ▼
+ │   ChromaDB Vector Store
+ │   (174 chunks, cosine similarity)
+ │          │
+ │          ▼
+ │   Retrieved Context (top-k with score threshold)
+ │          │
+ │          └──────────┐
+ │                     ▼
+ │            ChatPromptTemplate
+ │            (system + history + question + context)
+ │                     │
+ │                     ▼
+ │            OpenAI GPT-4o-mini
+ │                     │
+ └─ Conversation Memory (sliding window, 5 turns)
+                       │
+                       ▼
+              Answer + Source Citations
+```
 
 ## Tech Stack
 
@@ -23,8 +69,10 @@ An AI-powered agent that answers employee questions about HR policies using **Re
 | LLM | OpenAI GPT-4o-mini |
 | Embeddings | OpenAI text-embedding-3-small |
 | Vector Store | ChromaDB (persistent, local) |
+| PDF Loader | PyMuPDF (`PyMuPDFLoader`) |
 | UI | Streamlit |
-| Testing | pytest |
+| Testing | pytest (67 tests) |
+| Containerization | Docker |
 
 ## Project Structure
 
@@ -33,30 +81,43 @@ hr-policy-ai-agent/
 ├── .github/
 │   └── copilot-instructions.md     # Copilot project context
 ├── data/
-│   └── raw/                         # HR policy PDFs (add your own)
+│   └── raw/                         # HR policy documents (29 md + 2 pdf)
+│       ├── code_of_conduct/
+│       ├── employee_benefits/
+│       ├── leave_policies/
+│       ├── performance_evaluation/
+│       ├── training_development/
+│       └── vacation_pto/
 ├── docs/
 │   ├── PROJECT_PLAN.md              # Phase-by-phase plan & status
 │   └── TECHNICAL_DOCUMENT.md        # Deliverable — architecture & design
-├── examples/
-│   └── sample_queries.md            # Example Q&A pairs
 ├── prompts/
 │   └── system_prompt.md             # Agent system prompt
 ├── scripts/
 │   └── ingest.py                    # One-time document ingestion
 ├── src/
 │   ├── config.py                    # Settings & env vars
-│   ├── document_loader.py           # Load PDFs/docs
-│   ├── text_splitter.py             # Chunk documents
+│   ├── document_loader.py           # Load Markdown & PDF documents
+│   ├── text_splitter.py             # Chunk documents (markdown-aware)
 │   ├── embeddings.py                # OpenAI embedding wrapper
 │   ├── vector_store.py              # ChromaDB operations
-│   ├── retriever.py                 # Retrieval logic
+│   ├── retriever.py                 # Similarity search with score filtering
 │   ├── chain.py                     # RAG chain assembly
-│   ├── agent.py                     # Agent with tools & routing
+│   ├── agent.py                     # Agent with classification & routing
 │   └── app.py                       # Streamlit entry point
-├── tests/                           # pytest test suite
+├── tests/
+│   ├── conftest.py                  # Shared fixtures
+│   ├── test_config.py               # Config validation tests
+│   ├── test_document_loader.py      # Document loading tests
+│   ├── test_text_splitter.py        # Chunking tests
+│   ├── test_agent.py                # Agent classification & routing tests
+│   ├── test_edge_cases.py           # 5 edge case scenarios
+│   └── test_integration.py          # Retriever & RAG chain tests
 ├── .env.example                     # API key template
+├── Dockerfile                       # Container build
+├── .dockerignore
 ├── pyproject.toml                   # Project config & dependencies
-├── requirements.txt                 # Pinned dependencies
+├── requirements.txt                 # Dependencies
 └── README.md
 ```
 
@@ -89,19 +150,16 @@ cp .env.example .env
 # Edit .env and add your OpenAI API key
 ```
 
-### 3. Add HR Policy Documents
-
-Place your HR policy PDFs in the `data/raw/` directory.
-
-### 4. Ingest Documents
+### 3. Ingest Documents
 
 ```bash
 python scripts/ingest.py
 ```
 
-This loads, chunks, and embeds the documents into the ChromaDB vector store.
+This loads, chunks, and embeds the HR policy documents into the ChromaDB vector store.  
+Use `--reset` to clear and rebuild from scratch.
 
-### 5. Run the App
+### 4. Run the App
 
 ```bash
 streamlit run src/app.py
@@ -109,11 +167,43 @@ streamlit run src/app.py
 
 Open [http://localhost:8501](http://localhost:8501) in your browser.
 
+## Docker
+
+### Build & Run
+
+```bash
+docker build -t hr-policy-agent .
+docker run -p 8501:8501 -e OPENAI_API_KEY=your-key-here hr-policy-agent
+```
+
+> **Note:** The container runs the ingestion step automatically on startup, then launches Streamlit.
+
+### What's Inside
+
+The Docker image includes the application code, prompts, ingestion script, and raw HR documents. On first startup, it ingests the documents into an in-container ChromaDB store and then serves the Streamlit UI.
+
 ## Testing
 
 ```bash
+# Run all tests
 pytest tests/ -v
+
+# Unit tests only (no API key required)
+pytest tests/test_config.py tests/test_document_loader.py tests/test_text_splitter.py tests/test_agent.py -v
+
+# Integration tests (requires OPENAI_API_KEY + populated ChromaDB)
+pytest tests/test_integration.py tests/test_edge_cases.py -v
 ```
+
+### Edge Cases Tested
+
+| # | Scenario | Expected Behavior |
+|---|----------|-------------------|
+| 1 | Out-of-scope question (e.g., weather) | Polite redirect listing HR topics |
+| 2 | Sensitive topic (harassment, threats) | Escalation warning + link to HR contacts |
+| 3 | Multi-source / contradictory info | Retrieves from multiple docs, cites all |
+| 4 | Vague / ambiguous question | Returns helpful answer without crashing |
+| 5 | Inappropriate / unsafe request | Refuses gracefully, no sources |
 
 ## Documentation
 
