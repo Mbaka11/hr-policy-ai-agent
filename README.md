@@ -169,18 +169,33 @@ Open [http://localhost:8501](http://localhost:8501) in your browser.
 
 ## Docker
 
-### Build & Run
+### Build
 
 ```bash
 docker build -t hr-policy-agent .
-docker run -p 8501:8501 -e OPENAI_API_KEY=your-key-here hr-policy-agent
 ```
 
-> **Note:** The container runs the ingestion step automatically on startup, then launches Streamlit.
+### Run
+
+**Recommended — load your `.env` file directly (keeps your key out of shell history):**
+
+```bash
+docker run -p 8501:8501 --env-file .env hr-policy-agent
+```
+
+**Alternative — pass the key inline:**
+
+```bash
+docker run -p 8501:8501 -e OPENAI_API_KEY=sk-... hr-policy-agent
+```
+
+> **Note:** Never use the placeholder `your-key-here` — replace it with your real `sk-...` key from [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+
+Open [http://localhost:8501](http://localhost:8501) once you see `You can now view your Streamlit app in your browser`.
 
 ### What's Inside
 
-The Docker image includes the application code, prompts, ingestion script, and raw HR documents. On first startup, it ingests the documents into an in-container ChromaDB store and then serves the Streamlit UI.
+The Docker image includes the application code, prompts, ingestion script, and raw HR documents. On first startup, it automatically ingests the documents into an in-container ChromaDB store (`python scripts/ingest.py`), then launches Streamlit on port 8501.
 
 ## Testing
 
