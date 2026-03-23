@@ -222,7 +222,8 @@ pytest tests/test_integration.py tests/test_edge_cases.py -v
 
 ## Documentation
 
-- [Technical Document](docs/TECHNICAL_DOCUMENT.md) — Architecture, system prompt, edge cases, evaluation
+- [Technical Document (English)](docs/TECHNICAL_DOCUMENT.md) — Architecture, system prompt, edge cases, evaluation
+- [Document Technique (Français)](docs/TECHNICAL_DOCUMENT_FR.md) — Architecture, prompt système, cas limites, évaluation
 - [Project Plan](docs/PROJECT_PLAN.md) — Phase-by-phase plan with status tracking
 
 ## License

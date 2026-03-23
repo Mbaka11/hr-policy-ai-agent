@@ -59,13 +59,13 @@ Build a full-featured RAG-based AI agent for HR policy Q&A.
 | 21  | Write integration tests (retriever, chain)  | ✅ Done (6 tests) |
 | 22  | All 67 tests passing                        | ✅ Done |
 
-### Phase 6: Documentation & Deployment — `🔄 IN PROGRESS`
+### Phase 6: Documentation & Deployment — `✅ COMPLETE`
 
 | #   | Task                                                                              | Status  |
 | --- | --------------------------------------------------------------------------------- | ------- |
 | 23  | Create Dockerfile + .dockerignore                                                 | ✅ Done |
 | 24  | Polish README with architecture diagram, Docker, testing sections                 | ✅ Done |
-| 25  | Write TECHNICAL_DOCUMENT.md (architecture, system prompt, edge cases, evaluation) | ⬜      |
+| 25  | Write TECHNICAL_DOCUMENT.md (architecture, system prompt, edge cases, evaluation) | ✅ Done (EN + FR) |
 
 ### Phase 7: Video — `⬜ NOT STARTED`
 
