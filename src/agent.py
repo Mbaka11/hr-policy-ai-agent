@@ -21,11 +21,11 @@ ESCALATION_PATTERNS = [
     r"\bthreat(en|ened|ening|s)?\b",
     r"\bviolence\b",
     r"\bwhistleblow(er|ing)?\b",
-    r"\bretali(ation|atory)\b",
+    r"\bretali(at(ion|ed|ing)|atory)\b",
     r"\blawsuit\b",
     r"\blegal\s+(action|advice|rights|dispute)\b",
     r"\bterminate(d)?\b",
-    r"\bwrongful\s+(dismissal|termination)\b",
+    r"\bwrongful(ly)?\s+(dismiss(al|ed)|terminat(ion|ed))\b",
     r"\bfir(ed|ing)\s+me\b",
 ]
 
