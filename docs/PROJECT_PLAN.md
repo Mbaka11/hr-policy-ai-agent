@@ -50,22 +50,22 @@ Build a full-featured RAG-based AI agent for HR policy Q&A.
 | 17  | Add source document display         | ✅ Done |
 | 18  | Add sidebar with project info       | ✅ Done |
 
-### Phase 5: Testing & Evaluation — `⬜ NOT STARTED`
+### Phase 5: Testing & Evaluation — `✅ COMPLETE`
 
-| #   | Task                                        | Status |
-| --- | ------------------------------------------- | ------ |
-| 19  | Write unit tests (loader, retriever, chain) | ⬜     |
-| 20  | Write edge case tests (5 scenarios)         | ⬜     |
-| 21  | Document evaluation strategy                | ⬜     |
+| #   | Task                                        | Status  |
+| --- | ------------------------------------------- | ------- |
+| 19  | Write unit tests (config, loader, splitter, agent) | ✅ Done (47 tests) |
+| 20  | Write edge case tests (5 scenarios)         | ✅ Done (9 tests) |
+| 21  | Write integration tests (retriever, chain)  | ✅ Done (6 tests) |
+| 22  | All 67 tests passing                        | ✅ Done |
 
-### Phase 6: Documentation — `⬜ NOT STARTED`
+### Phase 6: Documentation & Deployment — `🔄 IN PROGRESS`
 
-| #   | Task                                                                              | Status |
-| --- | --------------------------------------------------------------------------------- | ------ |
-| 22  | Write TECHNICAL_DOCUMENT.md (architecture, system prompt, edge cases, evaluation) | ⬜     |
-| 23  | Create architecture flow diagram                                                  | ⬜     |
-| 24  | Polish README with diagram, screenshots, full setup guide                         | ⬜     |
-| 25  | Create Dockerfile + .dockerignore                                                 | ⬜     |
+| #   | Task                                                                              | Status  |
+| --- | --------------------------------------------------------------------------------- | ------- |
+| 23  | Create Dockerfile + .dockerignore                                                 | ✅ Done |
+| 24  | Polish README with architecture diagram, Docker, testing sections                 | ✅ Done |
+| 25  | Write TECHNICAL_DOCUMENT.md (architecture, system prompt, edge cases, evaluation) | ⬜      |
 
 ### Phase 7: Video — `⬜ NOT STARTED`
 
